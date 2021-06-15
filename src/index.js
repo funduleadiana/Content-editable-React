@@ -19,7 +19,19 @@ class App extends Component {
 
   state = this.initialState
 
-  
+  addRow=()=> {
+    this.setState(({row, store})=> {
+      return {
+        store: [...store, {...row, id: store.length + 1}],
+        row: this.initialState.row,
+      }
+    })
+  }
+  deleteRow=(id)=> {
+    this.setState(({store})=> ({
+      store: store.filter((item)=> id !== item.id),
+    }))
+  }
 
   render() {
     const {
