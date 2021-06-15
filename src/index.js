@@ -33,6 +33,17 @@ class App extends Component {
     }))
   }
 
+  handleContentEditable=(event)=>{
+    const {row} = this.state;
+    const {
+      currentTarget: {
+        dataset: {column},
+      },
+      target: {value},
+      } = event
+      this.setState({row: {...row, [column]: value}})
+    }
+  
   render() {
     const {
       store,
