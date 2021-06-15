@@ -32,6 +32,55 @@ class App extends Component {
         <h1>React Content-Editable</h1>
 
     {/* Table here */}
+        <Table celled>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell>Item</Table.HeaderCell>
+              <Table.HeaderCell>Price</Table.HeaderCell>
+              <Table.HeaderCell>Action</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+          {store.map((row) => {
+          return (
+            <Table.Row key={row.id}>
+              <Table.Cell>{row.item}</Table.Cell>
+              <Table.Cell>{row.price}</Table.Cell>
+              <Table.Cell className="narrow">
+                <Button
+                  onClick={() => {
+                    this.deleteRow(row.id)
+                  }}
+                >
+                  Delete
+                </Button>
+              </Table.Cell>
+            </Table.Row>
+            )
+          })}
+          <Table.Row>
+            <Table.Cell className="narrow">
+              <ContentEditable
+                html={item}
+                data-column="item"
+                className="content-editable"
+                onChange={this.handleContentEditable}
+              />
+            </Table.Cell>
+            <Table.Cell className="narrow">
+              <ContentEditable
+                html={price}
+                data-column="price"
+                className="content-editable"
+                onChange={this.handleContentEditable}
+              />
+            </Table.Cell>
+            <Table.Cell className="narrow">
+              <Button onClick={this.addRow}>Add</Button>
+            </Table.Cell>
+          </Table.Row>
+        </Table.Body>
+        </Table>
       </div>
     )
   }
