@@ -43,6 +43,12 @@ class App extends Component {
       } = event
       this.setState({row: {...row, [column]: value}})
     }
+// When pasting we need a special function for content-editable in order to use plain text
+    pasteAsText=(event)=>{
+      event.preventDefault();
+      const text = event.clipboardData.getData('text/plain')
+      document.execCommand('insertHTML', false, text)
+    }
   
   render() {
     const {
@@ -88,6 +94,7 @@ class App extends Component {
                 data-column="item"
                 className="content-editable"
                 onChange={this.handleContentEditable}
+                onPaste={this.pasteAsText}
               />
             </Table.Cell>
             <Table.Cell className="narrow">
@@ -96,6 +103,7 @@ class App extends Component {
                 data-column="price"
                 className="content-editable"
                 onChange={this.handleContentEditable}
+                onPaste={this.pasteAsText}
               />
             </Table.Cell>
             <Table.Cell className="narrow">
