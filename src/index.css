@@ -1,0 +1,31 @@
+.App {
+  margin: 30px auto;
+  max-width: 800px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.ui.table td {
+  padding: 10px;
+}
+
+.ui.table td.narrow{
+  padding: 0;
+}
+
+.ui.button{
+  margin: 0 10px;
+}
+
+.content-editable {
+  padding: 20px;
+}
+
+.content-editable:hover{
+  background: #d8d5d5;
+  
+}
+
+.content-editable:focus{
+  background: #f1e8b5;
+  outline: 5px;
+}
